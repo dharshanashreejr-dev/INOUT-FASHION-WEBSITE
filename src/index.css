@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Theme tokens ---- */
+/* Dark is the default/original palette. .light overrides it. */
+:root,
+:root.dark {
+  --c-ink: 18 18 18;
+  --c-charcoal: 27 27 27;
+  --c-panel: 36 36 36;
+  --c-gold: 217 164 65;
+  --c-goldDeep: 181 130 44;
+  --c-rust: 193 80 46;
+  --c-bone: 243 238 227;
+  --c-boneDim: 201 196 184;
+  --c-hairline: 255 255 255;
+}
+
+:root.light {
+  --c-ink: 250 248 243;
+  --c-charcoal: 241 236 227;
+  --c-panel: 255 255 255;
+  --c-gold: 165 111 20;
+  --c-goldDeep: 130 87 15;
+  --c-rust: 178 66 34;
+  --c-bone: 30 27 22;
+  --c-boneDim: 90 84 74;
+  --c-hairline: 20 18 15;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: rgb(var(--c-ink));
+  color: rgb(var(--c-bone));
+  scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--c-ink));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-goldDeep));
+  border-radius: 4px;
+}
+
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 40px;
+  background: rgb(var(--c-gold));
+}
+
+/* Hero sits on the SilkCurtain backdrop, which now switches palette
+   with the theme (dark curtain in dark mode, light cream curtain in
+   light mode). Hero copy must flip to match so it stays readable and
+   bold in both. */
+.hero-copy {
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+:root.light .hero-copy {
+  color: #1e1b16;
+  font-weight: 700;
+  text-shadow: none;
+}
+:root.light .masked-heading-wrap {
+  background: rgba(30, 27, 22, 0.14);
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+  padding: 0.15em 0.3em;
+}
+.hero-heading-light {
+  color: #1e1b16;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+:root.light .hero-pill {
+  background: rgba(165, 111, 20, 0.1);
+}
+.hero-copy-decrypted {
+  color: #fff;
+}
+.hero-copy-decrypted-pending {
+  color: rgba(255, 255, 255, 0.3);
+}
+:root.light .hero-copy-decrypted {
+  color: #1e1b16;
+}
+:root.light .hero-copy-decrypted-pending {
+  color: rgba(30, 27, 22, 0.3);
+}
+
+/* GlassFlow background blobs */
+.glass-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: glassFlowMove 16s ease-in-out infinite;
+}
+:root.light .glass-blob {
+  opacity: 0.22;
+}
+.glass-blob-a {
+  width: 420px;
+  height: 420px;
+  top: -10%;
+  left: -8%;
+  background: radial-gradient(circle at 30% 30%, #D9A441, transparent 70%);
+  animation-delay: 0s;
+}
+.glass-blob-b {
+  width: 380px;
+  height: 380px;
+  bottom: -12%;
+  right: -6%;
+  background: radial-gradient(circle at 60% 40%, #C1502E, transparent 70%);
+  animation-delay: -5s;
+}
+.glass-blob-c {
+  width: 300px;
+  height: 300px;
+  top: 30%;
+  left: 45%;
+  background: radial-gradient(circle at 50% 50%, #B5822C, transparent 70%);
+  animation-delay: -10s;
+}
+@keyframes glassFlowMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(6%, 4%) scale(1.08); }
+  66% { transform: translate(-5%, 6%) scale(0.94); }
+}
+
+/* Review / order screenshot cards */
+.review-card {
+  scroll-snap-align: start;
+}
+.review-scroll {
+  scroll-snap-type: x mandatory;
+}
+.star-btn {
+  transition: transform 0.15s ease;
+}
+.star-btn:hover {
+  transform: scale(1.15);
+}
