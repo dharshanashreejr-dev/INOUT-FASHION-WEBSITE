@@ -23,16 +23,6 @@ Opens at http://localhost:5173
   order count / revenue stats, and an orders page with status updates (New → Confirmed →
   Dispatched → Delivered).
 
-## About the "Rotating Cards" and "Scroll Stack" components
-
-These were requested from **React Bits Pro**, which needs a private registry + license key
-(`REACTBITS_LICENSE_KEY`) to install via `npx shadcn add @reactbits-starter/...`. That registry
-wasn't reachable from this build environment, so both were **hand-built from scratch** with the
-same visual result (3D draggable card carousel, pinned-and-dissolving scroll cards) using plain
-React, Framer Motion, and GSAP ScrollTrigger — no Pro license needed. If you get access to the
-real Pro components later, `RotatingCards.tsx` and `ScrollStack.tsx` are isolated enough to swap
-out directly.
-
 ## About WhatsApp order notifications — please read before demoing to the client
 
 This is a **frontend-only** build, and that has one real limitation worth flagging clearly:
