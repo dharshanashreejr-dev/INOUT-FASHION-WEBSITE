@@ -1,0 +1,100 @@
+/* Flowing vertical light-streak backdrop for the hero, in brand colors.
+   Switches to a light cream/gold palette in light theme so the hero
+   actually looks light, matching the rest of the page. */
+
+.silk-curtain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0c0c0e;
+}
+
+.silk-curtain__stripes {
+  position: absolute;
+  inset: -10% -10%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #0c0c0e 0px,
+    #14100c 6px,
+    #1f150d 14px,
+    #3a1f0f 26px,
+    #6b3015 42px,
+    #a5461f 58px,
+    #b5822c 74px,
+    #96702a 90px,
+    #3a1f0f 108px,
+    #14100c 128px
+  );
+  background-size: 220% 100%;
+  filter: blur(6px) saturate(1.05);
+  opacity: 0.75;
+  animation: silkDrift 22s linear infinite;
+}
+
+.silk-curtain__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 78% 30%, rgba(217, 164, 65, 0.22), transparent 70%),
+    radial-gradient(50% 60% at 15% 70%, rgba(18, 18, 18, 0.7), transparent 65%);
+  mix-blend-mode: soft-light;
+}
+
+.silk-curtain__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 9, 8, 0.6) 0%, rgba(10, 9, 8, 0.35) 22%, rgba(10, 9, 8, 0.4) 70%, rgba(10, 9, 8, 0.8) 100%),
+    radial-gradient(65% 60% at 50% 45%, rgba(8, 7, 6, 0.72) 0%, rgba(8, 7, 6, 0.35) 55%, transparent 85%);
+}
+
+/* ---- Light theme variant ---- */
+:root.light .silk-curtain {
+  background: #faf8f3;
+}
+
+:root.light .silk-curtain__stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #faf8f3 0px,
+    #f6f1e6 6px,
+    #f0e6d2 14px,
+    #e8d5ae 26px,
+    #dfb868 42px,
+    #d5a558 58px,
+    #c99a4c 74px,
+    #e2cfa0 90px,
+    #f0e6d2 108px,
+    #f6f1e6 128px
+  );
+  opacity: 0.4;
+  filter: blur(6px) saturate(0.85);
+}
+
+:root.light .silk-curtain__glow {
+  background:
+    radial-gradient(60% 55% at 78% 30%, rgba(217, 164, 65, 0.3), transparent 70%),
+    radial-gradient(50% 60% at 15% 70%, rgba(255, 255, 255, 0.6), transparent 65%);
+  mix-blend-mode: multiply;
+}
+
+:root.light .silk-curtain__vignette {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.55) 0%, rgba(255, 253, 247, 0.25) 22%, rgba(255, 253, 247, 0.3) 70%, rgba(255, 253, 247, 0.65) 100%),
+    radial-gradient(65% 60% at 50% 45%, rgba(255, 253, 247, 0.5) 0%, rgba(255, 253, 247, 0.2) 55%, transparent 85%);
+}
+
+@keyframes silkDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -220% 0%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .silk-curtain__stripes {
+    animation: none;
+  }
+}
